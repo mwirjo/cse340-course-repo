@@ -1,6 +1,34 @@
+<!-- 
+  footer.ejs - This is an EJS PARTIAL
+  A partial is a reusable template file included in other pages
+  This footer appears on: home.ejs, organizations.ejs, projects.ejs, and categories.ejs
+  
+  This closes the HTML structure that was opened in header.ejs
+  The closing </body> and </html> tags are here
+-->
+
+<!-- 
+  FOOTER SECTION
+  Displays copyright information at the bottom of every page
+-->
 <footer>
+    <!-- 
+      Copyright paragraph
+      <% %> executes JavaScript without outputting anything
+      <%= %> executes JavaScript AND outputs the result to the HTML
+      
+      new Date().getFullYear() gets the current year (2024, 2025, etc.)
+      This way the copyright year automatically updates without manual changes
+      
+      Example output: © 2025 CSE 340 Service Network.
+    -->
     <p>&copy; <%= new Date().getFullYear() %> CSE 340 Service Network.</p>
 </footer>
+
+<!-- 
+  Close the HTML document
+  This was opened in header.ejs with <html> and <body> tags
+-->
 </body>
 
 </html>

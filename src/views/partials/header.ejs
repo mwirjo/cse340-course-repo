@@ -1,20 +1,73 @@
+<!-- 
+  header.ejs - This is an EJS PARTIAL
+  A partial is a reusable template file included in other pages
+  This header is used on: home.ejs, organizations.ejs, projects.ejs, and categories.ejs
+  
+  Benefits of using partials:
+  - Code reuse: Update navigation in ONE place, automatically updates all pages
+  - Consistency: All pages have identical headers
+  - Maintainability: Easier to manage site-wide changes
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <!-- Character encoding for the page -->
     <meta charset="UTF-8">
+    
+    <!-- Viewport meta tag for responsive design on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 
+      Page title that appears in browser tab
+      <%= title %> is replaced with the title variable from each page's route
+      Examples:
+      - On home page: <title>Home</title>
+      - On organizations page: <title>Our Partner Organizations</title>
+      - On categories page: <title>Service Project Categories</title>
+    -->
     <title>
         <%= title %>
     </title>
+    
+    <!-- Link to the main CSS stylesheet -->
+    <!-- /css/main.css is served from the public/css/ folder -->
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
+    <!-- 
+      NAVIGATION BAR
+      This appears at the top of every page
+      Each <li> contains a link to a different page
+    -->
     <nav>
         <ul>
+            <!-- 
+              Home link
+              href="/" points to the root route, which serves home.ejs
+            -->
             <li><a href="/">Home</a></li>
+            
+            <!-- 
+              Organizations link
+              href="/organizations" points to the /organizations route
+            -->
             <li><a href="/organizations">Organizations</a></li>
+            
+            <!-- 
+              Projects link
+              href="/projects" points to the /projects route
+            -->
             <li><a href="/projects">Projects</a></li>
+            
+            <!-- 
+              Categories link - NEW!
+              href="/categories" points to the new /categories route we just added
+              This link will appear on all pages automatically because this is a partial
+              Users can now navigate to the categories page from any page on the site
+            -->
+            <li><a href="/categories">Categories</a></li>
         </ul>
     </nav>
