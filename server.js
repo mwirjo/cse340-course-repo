@@ -14,6 +14,8 @@ import path from 'path';
 import express from 'express';
 // imports test function and logic from db js
 import { testConnection } from './src/models/db.js';
+
+import { getAllOrganizations } from './src/models/organizations.js';
 // ============================================
 // ENVIRONMENT SETUP
 // ============================================
@@ -75,13 +77,11 @@ app.get('/', async (req, res) => {
 // ORGANIZATIONS PAGE ROUTE
 // When user visits http://localhost:3000/organizations
 app.get('/organizations', async (req, res) => {
-    // Title variable for this page
+    const organizations = await getAllOrganizations();
     const title = 'Our Partner Organizations';
-    
-    // Render organizations.ejs with the title
-    res.render('organizations', { title });
-});
 
+    res.render('organizations', { title, organizations });
+});
 // PROJECTS PAGE ROUTE
 // When user visits http://localhost:3000/projects
 app.get('/projects', async (req, res) => {
