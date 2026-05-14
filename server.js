@@ -12,7 +12,8 @@ import path from 'path';
 
 // express is the web framework that handles routing and HTTP requests
 import express from 'express';
-
+// imports test function and logic from db js
+import { testConnection } from './src/models/db.js';
 // ============================================
 // ENVIRONMENT SETUP
 // ============================================
@@ -111,10 +112,13 @@ app.get('/categories', async (req, res) => {
 
 // Listen on the specified PORT and start accepting requests
 // The callback function runs once the server successfully starts
-app.listen(PORT, () => {
-  // Log message confirming server is running and where to access it
-  console.log(`Server is running at http://127.0.0.1:${PORT}`);
-  
-  // Log the current environment (helps debug deployment issues)
-  console.log(`Environment: ${NODE_ENV}`);
+//this function was made asynchrounous and try catch logic was made with a waiting the test logic
+app.listen(PORT, async () => {
+  try {
+    await testConnection();
+    console.log(`Server is running at http://127.0.0.1:${PORT}`);
+    console.log(`Environment: ${NODE_ENV}`);
+  } catch (error) {
+    console.error('Error connecting to the database:', error);
+  }
 });
