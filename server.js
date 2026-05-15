@@ -15,7 +15,9 @@ import express from 'express';
 // imports test function and logic from db js
 import { testConnection } from './src/models/db.js';
 
-import { getAllOrganizations } from './src/models/organizations.js';
+import { getAllOrganizations }  from './src/models/organizations.js';
+
+import { getAllProjects } from './src/models/projects.js';
 // ============================================
 // ENVIRONMENT SETUP
 // ============================================
@@ -84,14 +86,18 @@ app.get('/organizations', async (req, res) => {
 });
 // PROJECTS PAGE ROUTE
 // When user visits http://localhost:3000/projects
+// Service Projects route
+// Service Projects route
 app.get('/projects', async (req, res) => {
-    // Title variable for this page
-    const title = 'Service Projects';
-    
-    // Render projects.ejs with the title
-    res.render('projects', { title });
+  try {
+    const projects = await getAllProjects();
+    console.log('Projects retrieved:', projects); // For testing
+    res.render('projects', { projects: projects });
+  } catch (err) {
+    console.error('Error retrieving projects:', err);
+    res.status(500).send('Error retrieving projects');
+  }
 });
-
 // CATEGORIES PAGE ROUTE - NEW!
 // When user visits http://localhost:3000/categories
 // This route follows the exact same pattern as the routes above
