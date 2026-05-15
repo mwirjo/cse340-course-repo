@@ -18,6 +18,7 @@ import { testConnection } from './src/models/db.js';
 import { getAllOrganizations }  from './src/models/organizations.js';
 
 import { getAllProjects } from './src/models/projects.js';
+import { getAllCategories } from './src/models/categories.js';
 // ============================================
 // ENVIRONMENT SETUP
 // ============================================
@@ -88,11 +89,14 @@ app.get('/organizations', async (req, res) => {
 // When user visits http://localhost:3000/projects
 // Service Projects route
 // Service Projects route
+// Projects route
 app.get('/projects', async (req, res) => {
   try {
     const projects = await getAllProjects();
-    console.log('Projects retrieved:', projects); // For testing
-    res.render('projects', { projects: projects });
+    res.render('projects', { 
+      title: 'Service Projects',
+      projects: projects 
+    });
   } catch (err) {
     console.error('Error retrieving projects:', err);
     res.status(500).send('Error retrieving projects');
@@ -102,14 +106,18 @@ app.get('/projects', async (req, res) => {
 // When user visits http://localhost:3000/categories
 // This route follows the exact same pattern as the routes above
 // This consistency makes the code predictable and maintainable
+// Categories route
 app.get('/categories', async (req, res) => {
-    // Title variable for the categories page
-    // This will display in the browser tab and as the page header
-    const title = 'Service Project Categories';
-    
-    // Render categories.ejs (the new file we created) with the title
-    // categories.ejs will access this title with <%= title %>
-    res.render('categories', { title });
+  try {
+    const categories = await getAllCategories();
+    res.render('categories', { 
+      title: 'Service Project Categories',
+      categories: categories 
+    });
+  } catch (err) {
+    console.error('Error retrieving categories:', err);
+    res.status(500).send('Error retrieving categories');
+  }
 });
 
 // ============================================

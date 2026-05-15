@@ -1,76 +1,20 @@
-<%# 
-  categories.ejs - Displays Service Project Categories
-  This page follows the same structure as other EJS pages:
-  1. Includes the header partial (navigation + title)
-  2. Displays main content with the categories
-  3. Includes the footer partial
-%>
-
 <%- include('partials/header') %>
-
   <main>
-    <!-- 
-      Display the page title using the 'title' variable passed from server.js
-      <%= %> renders the variable as HTML
-      This title is also displayed in the browser tab via the header partial
-    -->
     <h1>
       <%= title %>
     </h1>
 
-    <!-- 
-      Introductory paragraph explaining what categories are
-      Gives context to visitors about the service project categories
-    -->
-    <p>Our service projects are organized into the following categories. Each category represents different areas where volunteers can make an impact in their communities.</p>
+    <p>Here are our service project categories:</p>
 
-    <!-- 
-      Container for displaying all categories
-      Using a <div> with class "categories-container" for styling purposes
-      The CSS in main.css will format this as a grid or flexbox layout
-    -->
     <div class="categories-container">
-
-      <!-- 
-        Category 1: Environmental
-        Each category is in its own <div> with class "category-card"
-        This allows CSS to style them uniformly (border, padding, shadow, etc.)
-      -->
-      <div class="category-card">
-        <h2>Environmental</h2>
-        <p>Projects focused on environmental conservation, sustainability, and protecting natural resources. Help us build a greener future.</p>
-      </div>
-
-      <!-- 
-        Category 2: Educational
-        Same structure as above - consistent design pattern
-      -->
-      <div class="category-card">
-        <h2>Educational</h2>
-        <p>Projects supporting education and learning opportunities. From tutoring to building libraries, help expand access to knowledge.</p>
-      </div>
-
-      <!-- 
-        Category 3: Community Service
-        All categories follow the same HTML structure for consistency
-      -->
-      <div class="category-card">
-        <h2>Community Service</h2>
-        <p>General community-based projects that strengthen local neighborhoods and support community development.</p>
-      </div>
-
-      <!-- 
-        Category 4: Health and Wellness
-        Final category - same pattern maintains visual consistency
-      -->
-      <div class="category-card">
-        <h2>Health and Wellness</h2>
-        <p>Projects promoting health and wellness initiatives. Support healthcare access, fitness programs, and mental health awareness.</p>
-      </div>
-
+      <% categories.forEach(category=> { %>
+        <div class="category-card">
+          <div class="category-name">
+            <%= category.name %>
+          </div>
+        </div>
+        <% }); %>
     </div>
-    <!-- End of categories-container -->
-
   </main>
 
-<%- include('partials/footer') %>
+  <%- include('partials/footer') %>

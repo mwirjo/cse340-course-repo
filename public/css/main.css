@@ -463,5 +463,314 @@ button:focus {
 }
 
 /* ============================================================================
+   PROJECTS PAGE STYLES
+   ============================================================================ */
+
+/*
+   Projects container - creates a list with nice styling
+   Uses flexbox for vertical layout
+   Gap provides spacing between items
+   Margin creates space above and below
+*/
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 40px 0;
+}
+
+/*
+   Individual project card
+   Background color provides contrast
+   Padding gives internal spacing
+   Border-left creates accent bar (matches category style)
+   Box-shadow adds depth and professional appearance
+   Transition allows smooth hover animation
+*/
+.project-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*
+   Project card hover state
+   Transform lifts the card slightly
+   Box-shadow enhances the depth effect
+   Creates interactive feel
+*/
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/*
+   Project title styling
+   Bold and prominent
+   Color matches the primary theme
+*/
+.project-card .project-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+
+/*
+   Project organization name styling
+   Italicized and lighter color to distinguish from title
+   Shows which organization runs the project
+*/
+.project-card .project-org {
+    font-size: 1rem;
+    font-style: italic;
+    color: #3498db;
+    font-weight: 500;
+}
+
+/*
+   Project description styling
+   Regular weight and darker color for readability
+*/
+.project-card .project-description {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+/*
+   Project location styling
+   Icon emoji provides visual indicator
+   Slightly lighter color
+*/
+.project-card .project-location {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 12px;
+}
+
+/*
+   Project date styling
+   Small, subtle color
+   Provides temporal context
+*/
+.project-card .project-date {
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+/* ============================================================================
+   CATEGORIES PAGE STYLES (ENHANCED)
+   ============================================================================ */
+
+/*
+   Categories container - creates a grid layout
+   Uses CSS Grid for responsive design
+   auto-fit allows responsive columns
+   minmax ensures minimum card width
+   gap provides consistent spacing
+*/
+.categories-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+/*
+   Individual category card
+   White background for contrast
+   Padding provides internal spacing
+   Border-left creates accent bar (theme color)
+   Box-shadow adds depth
+   Transition for smooth hover effects
+*/
+.category-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*
+   Category card hover state
+   Slight lift effect
+   Enhanced shadow for depth
+*/
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/*
+   Category name within cards
+   Bold and prominent
+   Primary theme color
+*/
+.category-card .category-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+/*
+   Icon for category (optional)
+   Creates visual interest
+   Aligns with category theme
+*/
+.category-card .category-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN - PROJECTS & CATEGORIES
+   ============================================================================ */
+
+/*
+   Media query for tablets and smaller screens
+*/
+@media (max-width: 768px) {
+
+    /* Projects container remains flexible */
+    .projects-container {
+        gap: 15px;
+    }
+
+    /* Project cards have less padding on mobile */
+    .project-card {
+        padding: 20px;
+    }
+
+    /* Project title smaller on mobile */
+    .project-card .project-title {
+        font-size: 1.1rem;
+    }
+
+    /* Categories grid becomes 1-2 columns on tablet */
+    .categories-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    /* Category cards have less padding */
+    .category-card {
+        padding: 20px;
+    }
+
+    /* Category name smaller on mobile */
+    .category-card .category-name {
+        font-size: 1.1rem;
+    }
+}
+
+/*
+   Media query for mobile phones
+*/
+@media (max-width: 480px) {
+
+    /* Projects stack nicely on mobile */
+    .projects-container {
+        gap: 12px;
+    }
+
+    /* Smaller padding on phones */
+    .project-card {
+        padding: 15px;
+    }
+
+    /* Smaller text on phones */
+    .project-card .project-title {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .project-card .project-description {
+        font-size: 0.9rem;
+        margin: 8px 0;
+    }
+
+    /* Categories become single column on phones */
+    .categories-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Less padding on category cards */
+    .category-card {
+        padding: 15px;
+    }
+
+    .category-card .category-name {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================================================
+   ORGANIZATION-SPECIFIC PROJECT COLORS
+   ============================================================================ */
+
+/*
+   Color coding for projects by organization
+   Each organization has a unique color for visual identification
+   Colors are used for border-left and organization name text
+*/
+
+/* Community Helpers United - Blue */
+.project-card.project-org-1 {
+    border-left-color: #3498db;
+}
+
+.project-card.project-org-1 .project-org {
+    color: #3498db;
+    font-weight: 600;
+}
+
+/* Wildlife Conservation Society - Green */
+.project-card.project-org-2 {
+    border-left-color: #27ae60;
+}
+
+.project-card.project-org-2 .project-org {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+/* Education for All - Red */
+.project-card.project-org-3 {
+    border-left-color: #e74c3c;
+}
+
+.project-card.project-org-3 .project-org {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* ============================================================================
+   PROJECT COUNT STYLING
+   ============================================================================ */
+
+/*
+   Project count display
+   Shows total number of projects
+   Positioned near the title for easy visibility
+*/
+.project-count {
+    font-weight: bold;
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+/* ============================================================================
    END OF STYLESHEET
    ============================================================================ */
