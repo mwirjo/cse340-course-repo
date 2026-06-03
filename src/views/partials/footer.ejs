@@ -12,18 +12,15 @@
   Displays copyright information at the bottom of every page
 -->
 <footer>
-    <!-- 
-      Copyright paragraph
-      <% %> executes JavaScript without outputting anything
-      <%= %> executes JavaScript AND outputs the result to the HTML
-      
-      new Date().getFullYear() gets the current year (2024, 2025, etc.)
-      This way the copyright year automatically updates without manual changes
-      
-      Example output: © 2025 CSE 340 Service Network.
-    -->
-    <p>&copy; <%= new Date().getFullYear() %> CSE 340 Service Network.</p>
+  <p>&copy; <%= new Date().getFullYear() %> CSE 340 Service Network.
+      <% if (NODE_ENV==='development' ) { %>
+        (Development mode)
+        <% } %>
+  </p>
 </footer>
+</body>
+
+</html>
 
 <!-- 
   Close the HTML document
