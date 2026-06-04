@@ -36,5 +36,9 @@ router.get('/category/:id', showCategoryDetailsPage);
 // Test route to simulate a 500 server error (development use only)
 router.get('/test-error', testErrorPage);
 
+// Silence Chrome DevTools probe
+router.get('/.well-known/appspecific/com.chrome.devtools.json', (req, res) => {
+    res.status(204).end();
+});
 // Export the router to be used in server.js
 export default router;

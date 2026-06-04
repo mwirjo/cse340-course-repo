@@ -7,10 +7,10 @@
    RESET & BASE STYLES
    ============================================================================ */
 
-/* 
-   Reset default browser margins and padding for consistency
-   Set base font family and color for entire site
-*/
+html {
+    height: 100%;
+}
+
 html,
 body {
     margin: 0;
@@ -21,24 +21,17 @@ body {
     line-height: 1.6;
 }
 
-/* 
-   Main content area padding
-   Provides breathing room on all sides
-   Uses rem units for better scalability
-*/
 body {
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ============================================================================
    HEADER & NAVIGATION STYLES
    ============================================================================ */
 
-/*
-   Header container (includes navigation)
-   Background color creates visual separation
-   Box-shadow adds subtle depth
-*/
 header {
     background-color: #2c3e50;
     padding: 0;
@@ -48,11 +41,6 @@ header {
     z-index: 100;
 }
 
-/*
-   Navigation bar styling
-   Flex display for proper alignment
-   Padding provides internal spacing
-*/
 nav {
     background-color: #2c3e50;
     padding: 0 20px;
@@ -61,14 +49,6 @@ nav {
     min-height: 60px;
 }
 
-/*
-   Navigation list - remove default list styling
-   ul {
-       - list-style-type: none removes bullets
-       - margin: 0, padding: 0 removes default spacing
-       - display: flex creates horizontal layout
-       - gap provides spacing between items
-   */
 nav ul {
     list-style-type: none;
     margin: 0;
@@ -77,22 +57,11 @@ nav ul {
     gap: 0;
 }
 
-/*
-   Individual navigation list items
-   flex: 1 makes items distribute evenly
-   text-align: center centers the text
-*/
 nav li {
     flex: 1;
     text-align: center;
 }
 
-/*
-   Navigation links styling
-   Padding creates clickable area
-   Color contrasts well with dark background (WCAG accessible)
-   Smooth transition for hover effect
-*/
 nav a {
     display: block;
     padding: 20px 15px;
@@ -102,20 +71,11 @@ nav a {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/*
-   Navigation hover state
-   Background changes to indicate interactivity
-   Color brightens for additional visual feedback
-*/
 nav a:hover {
     background-color: #3498db;
     color: #ffffff;
 }
 
-/*
-   Active/current page link (optional enhancement)
-   Use this class on the current page link for visual indication
-*/
 nav a:active {
     background-color: #2980b9;
 }
@@ -124,24 +84,15 @@ nav a:active {
    MAIN CONTENT STYLES
    ============================================================================ */
 
-/*
-   Main content container
-   Padding creates margins from edges
-   Max-width prevents very long lines on large screens
-   Margin auto centers content
-*/
 main {
+    flex: 1;
     max-width: 1200px;
+    width: 100%;
     margin: 40px auto;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
-/*
-   Page headings (H1)
-   Large, bold, professional appearance
-   Color matches the site's primary color
-   Margin provides spacing
-*/
 h1 {
     font-size: 2.5rem;
     color: #2c3e50;
@@ -151,11 +102,6 @@ h1 {
     padding-bottom: 15px;
 }
 
-/*
-   Subheadings (H2)
-   Slightly smaller than H1
-   Used in category cards and sections
-*/
 h2 {
     font-size: 1.5rem;
     color: #2c3e50;
@@ -163,11 +109,6 @@ h2 {
     margin-bottom: 15px;
 }
 
-/*
-   Paragraphs
-   Line height for readability
-   Color ensures contrast for accessibility
-*/
 p {
     font-size: 1rem;
     color: #555;
@@ -176,83 +117,9 @@ p {
 }
 
 /* ============================================================================
-   CATEGORIES PAGE STYLES
-   ============================================================================ */
-
-/*
-   Categories container - creates a grid layout
-   display: grid - modern layout method
-   grid-template-columns: 
-       - On large screens: 2 columns
-       - Uses repeat() for clean syntax
-   gap: 25px - spacing between cards
-   margin: creates space above and below
-*/
-.categories-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin: 40px 0;
-}
-
-/*
-   Individual category card
-   Background color provides contrast
-   Padding gives internal spacing
-   Border-radius creates rounded corners (modern look)
-   Box-shadow adds depth and professional appearance
-   Transition allows smooth hover animation
-*/
-.category-card {
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 8px;
-    border-left: 4px solid #3498db;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/*
-   Category card hover state
-   Transform lifts the card slightly
-   Box-shadow enhances the depth effect
-   Creates interactive feel
-*/
-.category-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-/*
-   H2 within category cards - override default styling
-   Color matches the primary theme
-*/
-.category-card h2 {
-    margin-top: 0;
-    color: #2c3e50;
-    font-size: 1.3rem;
-}
-
-/*
-   Paragraphs in category cards
-   Slightly lighter color for contrast
-*/
-.category-card p {
-    color: #666;
-    font-size: 0.95rem;
-}
-
-/* ============================================================================
    IMAGES STYLES
    ============================================================================ */
 
-/*
-   Main logo image on home page
-   Max-width ensures it doesn't overflow
-   Height auto maintains aspect ratio
-   Display block removes inline spacing
-   Margin auto centers the image
-*/
 .main-logo {
     max-width: 100%;
     height: auto;
@@ -260,46 +127,36 @@ p {
     margin: 30px auto;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    /* ← add */
+    padding: 12px;
+    /* ← add */
 }
 
-/*
-   Organization images/logos
-   Similar sizing as main-logo
-   Can be used in a grid on organizations page
-*/
 .org-logo {
     max-width: 200px;
     height: auto;
     margin: 15px;
     border-radius: 4px;
+    background-color: #ffffff;
+    /* ← add */
+    padding: 12px;
+    /* ← add */
 }
 
 /* ============================================================================
    FOOTER STYLES
    ============================================================================ */
 
-/*
-   Footer container
-   Dark background matches header
-   Text centered and light colored
-   Margin-top pushes it to bottom
-   Padding provides internal spacing
-   Border-top adds visual separation
-*/
 footer {
     background-color: #2c3e50;
     color: #ecf0f1;
     text-align: center;
     padding: 30px 20px;
-    margin-top: 60px;
+    margin-top: auto;
     border-top: 1px solid #34495e;
 }
 
-/*
-   Footer paragraph
-   Override default paragraph color (should be light)
-   Font size slightly smaller
-*/
 footer p {
     color: #ecf0f1;
     font-size: 0.95rem;
@@ -307,171 +164,9 @@ footer p {
 }
 
 /* ============================================================================
-   RESPONSIVE DESIGN - MOBILE & TABLET
-   ============================================================================ */
-
-/*
-   Media query for tablets and smaller screens (max 768px width)
-   This ensures the site looks good on all device sizes
-*/
-@media (max-width: 768px) {
-
-    /* Reduce base font size on smaller screens */
-    html {
-        font-size: 14px;
-    }
-
-    /* H1 headings smaller on mobile */
-    h1 {
-        font-size: 2rem;
-    }
-
-    /* H2 headings smaller on mobile */
-    h2 {
-        font-size: 1.2rem;
-    }
-
-    /* Navigation items stack vertically on very small screens */
-    nav ul {
-        flex-wrap: wrap;
-    }
-
-    /* Navigation links have less padding on mobile */
-    nav a {
-        padding: 15px 10px;
-        font-size: 0.9rem;
-    }
-
-    /* Main content padding reduced for mobile */
-    main {
-        margin: 20px auto;
-        padding: 0 15px;
-    }
-
-    /* Categories grid becomes 1 column on mobile */
-    .categories-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* Body padding reduced */
-    body {
-        padding: 0;
-    }
-}
-
-/*
-   Media query for mobile phones (max 480px width)
-   Further optimization for very small screens
-*/
-@media (max-width: 480px) {
-
-    /* Smaller headings on phones */
-    h1 {
-        font-size: 1.5rem;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-    }
-
-    h2 {
-        font-size: 1rem;
-    }
-
-    /* Category cards have less padding */
-    .category-card {
-        padding: 20px;
-    }
-
-    /* Navigation padding further reduced */
-    nav a {
-        padding: 12px 8px;
-        font-size: 0.85rem;
-    }
-
-    /* Main logo smaller on phones */
-    .main-logo {
-        margin: 20px auto;
-    }
-
-    /* Footer has less padding on phones */
-    footer {
-        padding: 20px 10px;
-    }
-}
-
-/* ============================================================================
-   ACCESSIBILITY STANDARDS
-   ============================================================================ */
-
-/*
-   Focus states for keyboard navigation
-   Users who navigate with Tab key can see where they are
-   Outline provides clear visual indicator
-   Color contrasts well (WCAG AA compliant)
-*/
-a:focus,
-button:focus {
-    outline: 3px solid #3498db;
-    outline-offset: 2px;
-}
-
-/*
-   Ensure sufficient color contrast
-   All text colors meet WCAG AA standards (4.5:1 ratio minimum)
-   Dark text on light backgrounds, light text on dark backgrounds
-   
-   Verified contrasts:
-   - #333 on #f5f5f5: 12.6:1 ✓
-   - #ecf0f1 on #2c3e50: 11.5:1 ✓
-   - #555 on #ffffff: 7.5:1 ✓
-*/
-
-/*
-   Readable font sizes
-   Minimum 16px on mobile (standard for accessibility)
-   Line-height 1.6+ for improved readability
-   Sans-serif font for screen readability
-*/
-
-/* ============================================================================
-   UTILITY / HELPER CLASSES
-   ============================================================================ */
-
-/*
-   Container class for centering and max-width
-   Can be applied to any element that needs max-width + centering
-*/
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/*
-   Text alignment utilities
-*/
-.text-center {
-    text-align: center;
-}
-
-.text-left {
-    text-align: left;
-}
-
-.text-right {
-    text-align: right;
-}
-
-/* ============================================================================
    PROJECTS PAGE STYLES
    ============================================================================ */
 
-/*
-   Projects container - creates a list with nice styling
-   Uses flexbox for vertical layout
-   Gap provides spacing between items
-   Margin creates space above and below
-*/
 .projects-container {
     display: flex;
     flex-direction: column;
@@ -479,14 +174,6 @@ button:focus {
     margin: 40px 0;
 }
 
-/*
-   Individual project card
-   Background color provides contrast
-   Padding gives internal spacing
-   Border-left creates accent bar (matches category style)
-   Box-shadow adds depth and professional appearance
-   Transition allows smooth hover animation
-*/
 .project-card {
     background-color: #ffffff;
     padding: 25px;
@@ -496,22 +183,11 @@ button:focus {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/*
-   Project card hover state
-   Transform lifts the card slightly
-   Box-shadow enhances the depth effect
-   Creates interactive feel
-*/
 .project-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-/*
-   Project title styling
-   Bold and prominent
-   Color matches the primary theme
-*/
 .project-card .project-title {
     font-size: 1.3rem;
     font-weight: 600;
@@ -519,11 +195,6 @@ button:focus {
     margin: 0 0 10px 0;
 }
 
-/*
-   Project organization name styling
-   Italicized and lighter color to distinguish from title
-   Shows which organization runs the project
-*/
 .project-card .project-org {
     font-size: 1rem;
     font-style: italic;
@@ -531,10 +202,6 @@ button:focus {
     font-weight: 500;
 }
 
-/*
-   Project description styling
-   Regular weight and darker color for readability
-*/
 .project-card .project-description {
     font-size: 0.95rem;
     color: #666;
@@ -542,22 +209,12 @@ button:focus {
     line-height: 1.6;
 }
 
-/*
-   Project location styling
-   Icon emoji provides visual indicator
-   Slightly lighter color
-*/
 .project-card .project-location {
     font-size: 0.9rem;
     color: #777;
     margin-top: 12px;
 }
 
-/*
-   Project date styling
-   Small, subtle color
-   Provides temporal context
-*/
 .project-card .project-date {
     font-size: 0.85rem;
     color: #999;
@@ -565,16 +222,9 @@ button:focus {
 }
 
 /* ============================================================================
-   CATEGORIES PAGE STYLES (ENHANCED)
+   CATEGORIES PAGE STYLES
    ============================================================================ */
 
-/*
-   Categories container - creates a grid layout
-   Uses CSS Grid for responsive design
-   auto-fit allows responsive columns
-   minmax ensures minimum card width
-   gap provides consistent spacing
-*/
 .categories-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -582,14 +232,6 @@ button:focus {
     margin: 40px 0;
 }
 
-/*
-   Individual category card
-   White background for contrast
-   Padding provides internal spacing
-   Border-left creates accent bar (theme color)
-   Box-shadow adds depth
-   Transition for smooth hover effects
-*/
 .category-card {
     background-color: #ffffff;
     padding: 25px;
@@ -599,21 +241,22 @@ button:focus {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/*
-   Category card hover state
-   Slight lift effect
-   Enhanced shadow for depth
-*/
 .category-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-/*
-   Category name within cards
-   Bold and prominent
-   Primary theme color
-*/
+.category-card h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.category-card p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
 .category-card .category-name {
     font-size: 1.3rem;
     font-weight: 600;
@@ -622,11 +265,6 @@ button:focus {
     margin-bottom: 10px;
 }
 
-/*
-   Icon for category (optional)
-   Creates visual interest
-   Aligns with category theme
-*/
 .category-card .category-icon {
     font-size: 2rem;
     margin-bottom: 10px;
@@ -634,99 +272,9 @@ button:focus {
 }
 
 /* ============================================================================
-   RESPONSIVE DESIGN - PROJECTS & CATEGORIES
-   ============================================================================ */
-
-/*
-   Media query for tablets and smaller screens
-*/
-@media (max-width: 768px) {
-
-    /* Projects container remains flexible */
-    .projects-container {
-        gap: 15px;
-    }
-
-    /* Project cards have less padding on mobile */
-    .project-card {
-        padding: 20px;
-    }
-
-    /* Project title smaller on mobile */
-    .project-card .project-title {
-        font-size: 1.1rem;
-    }
-
-    /* Categories grid becomes 1-2 columns on tablet */
-    .categories-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-    }
-
-    /* Category cards have less padding */
-    .category-card {
-        padding: 20px;
-    }
-
-    /* Category name smaller on mobile */
-    .category-card .category-name {
-        font-size: 1.1rem;
-    }
-}
-
-/*
-   Media query for mobile phones
-*/
-@media (max-width: 480px) {
-
-    /* Projects stack nicely on mobile */
-    .projects-container {
-        gap: 12px;
-    }
-
-    /* Smaller padding on phones */
-    .project-card {
-        padding: 15px;
-    }
-
-    /* Smaller text on phones */
-    .project-card .project-title {
-        font-size: 1rem;
-        margin-bottom: 8px;
-    }
-
-    .project-card .project-description {
-        font-size: 0.9rem;
-        margin: 8px 0;
-    }
-
-    /* Categories become single column on phones */
-    .categories-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    /* Less padding on category cards */
-    .category-card {
-        padding: 15px;
-    }
-
-    .category-card .category-name {
-        font-size: 1rem;
-    }
-}
-
-/* ============================================================================
    ORGANIZATION-SPECIFIC PROJECT COLORS
    ============================================================================ */
 
-/*
-   Color coding for projects by organization
-   Each organization has a unique color for visual identification
-   Colors are used for border-left and organization name text
-*/
-
-/* Community Helpers United - Blue */
 .project-card.project-org-1 {
     border-left-color: #3498db;
 }
@@ -736,7 +284,6 @@ button:focus {
     font-weight: 600;
 }
 
-/* Wildlife Conservation Society - Green */
 .project-card.project-org-2 {
     border-left-color: #27ae60;
 }
@@ -746,7 +293,6 @@ button:focus {
     font-weight: 600;
 }
 
-/* Education for All - Red */
 .project-card.project-org-3 {
     border-left-color: #e74c3c;
 }
@@ -760,11 +306,6 @@ button:focus {
    PROJECT COUNT STYLING
    ============================================================================ */
 
-/*
-   Project count display
-   Shows total number of projects
-   Positioned near the title for easy visibility
-*/
 .project-count {
     font-weight: bold;
     color: #555;
@@ -776,19 +317,10 @@ button:focus {
    CATEGORY TAGS - PROJECT DETAILS PAGE
    ============================================================================ */
 
-/*
-   Container for category tags on project details page
-   Margin provides spacing from content above
-*/
 .category-tags {
     margin-top: 20px;
 }
 
-/*
-   Individual category tag
-   Pill-shaped button style
-   Links to category details page
-*/
 .category-tag {
     display: inline-block;
     background-color: #3498db;
@@ -801,13 +333,337 @@ button:focus {
     transition: background-color 0.3s ease;
 }
 
-/*
-   Category tag hover state
-   Darker blue on hover for interactivity
-*/
 .category-tag:hover {
     background-color: #2980b9;
 }
+
+/* ============================================================================
+   UTILITY / HELPER CLASSES
+   ============================================================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+a:focus,
+button:focus {
+    outline: 3px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* ============================================================================
+   DARK MODE TOGGLE BUTTON
+   ============================================================================ */
+
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+    z-index: 999;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #2980b9;
+}
+
+/* ============================================================================
+   DARK MODE - CSS CUSTOM PROPERTIES APPROACH
+   Covers both automatic (prefers-color-scheme) and manual (body.dark-mode)
+   in one place so they never drift out of sync.
+   ============================================================================ */
+
+:root {
+    --bg-page: #f5f5f5;
+    --bg-card: #ffffff;
+    --bg-nav: #2c3e50;
+    --bg-footer: #2c3e50;
+    --bg-footer-border: #34495e;
+    --text-primary: #333;
+    --text-secondary: #555;
+    --text-muted: #666;
+    --text-faint: #999;
+    --text-nav: #ecf0f1;
+    --text-footer: #ecf0f1;
+    --heading-color: #2c3e50;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --card-shadow-hover: rgba(0, 0, 0, 0.15);
+    --project-count-color: #555;
+    --tag-bg: #3498db;
+    --tag-bg-hover: #2980b9;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-page: #1a1a2e;
+        --bg-card: #16213e;
+        --bg-nav: #0f0f1a;
+        --bg-footer: #0f0f1a;
+        --bg-footer-border: #2c3e50;
+        --text-primary: #ecf0f1;
+        --text-secondary: #bdc3c7;
+        --text-muted: #bdc3c7;
+        --text-faint: #95a5a6;
+        --text-nav: #ecf0f1;
+        --text-footer: #ecf0f1;
+        --heading-color: #ecf0f1;
+        --card-shadow: rgba(0, 0, 0, 0.4);
+        --card-shadow-hover: rgba(0, 0, 0, 0.5);
+        --project-count-color: #bdc3c7;
+        --tag-bg: #2471a3;
+        --tag-bg-hover: #1a5276;
+    }
+}
+
+body.dark-mode {
+    --bg-page: #1a1a2e;
+    --bg-card: #16213e;
+    --bg-nav: #0f0f1a;
+    --bg-footer: #0f0f1a;
+    --bg-footer-border: #2c3e50;
+    --text-primary: #ecf0f1;
+    --text-secondary: #bdc3c7;
+    --text-muted: #bdc3c7;
+    --text-faint: #95a5a6;
+    --text-nav: #ecf0f1;
+    --text-footer: #ecf0f1;
+    --heading-color: #ecf0f1;
+    --card-shadow: rgba(0, 0, 0, 0.4);
+    --card-shadow-hover: rgba(0, 0, 0, 0.5);
+    --project-count-color: #bdc3c7;
+    --tag-bg: #2471a3;
+    --tag-bg-hover: #1a5276;
+}
+
+/* Apply variables to elements */
+
+html,
+body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+}
+
+h1,
+h2,
+h3 {
+    color: var(--heading-color);
+}
+
+p {
+    color: var(--text-secondary);
+}
+
+header,
+nav {
+    background-color: var(--bg-nav);
+}
+
+nav a {
+    color: var(--text-nav);
+}
+
+footer {
+    background-color: var(--bg-footer);
+    border-top-color: var(--bg-footer-border);
+}
+
+footer p {
+    color: var(--text-footer);
+}
+
+.project-card,
+.category-card {
+    background-color: var(--bg-card);
+    box-shadow: 0 2px 6px var(--card-shadow);
+}
+
+.project-card:hover,
+.category-card:hover {
+    box-shadow: 0 6px 15px var(--card-shadow-hover);
+}
+
+.project-card .project-title,
+.category-card .category-name,
+.category-card h2 {
+    color: var(--heading-color);
+}
+
+.project-card .project-description,
+.category-card p {
+    color: var(--text-muted);
+}
+
+.project-card .project-location {
+    color: var(--text-muted);
+}
+
+.project-card .project-date {
+    color: var(--text-faint);
+}
+
+.project-count {
+    color: var(--project-count-color);
+}
+
+.category-tag {
+    background-color: var(--tag-bg);
+}
+
+.category-tag:hover {
+    background-color: var(--tag-bg-hover);
+}
+
+a {
+    color: #3498db;
+}
+
+a:hover {
+    color: #5dade2;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 15px 10px;
+        font-size: 0.9rem;
+    }
+
+    main {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .categories-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .category-card {
+        padding: 20px;
+    }
+
+    .category-card .category-name {
+        font-size: 1.1rem;
+    }
+
+    .projects-container {
+        gap: 15px;
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+
+    .project-card .project-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    nav a {
+        padding: 12px 8px;
+        font-size: 0.85rem;
+    }
+
+    main {
+        margin: 15px auto;
+    }
+
+    .main-logo {
+        margin: 20px auto;
+    }
+
+    footer {
+        padding: 20px 10px;
+    }
+
+    .categories-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .category-card {
+        padding: 15px;
+    }
+
+    .category-card .category-name {
+        font-size: 1rem;
+    }
+
+    .projects-container {
+        gap: 12px;
+    }
+
+    .project-card {
+        padding: 15px;
+    }
+
+    .project-card .project-title {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .project-card .project-description {
+        font-size: 0.9rem;
+        margin: 8px 0;
+    }
+}
+
 /* ============================================================================
    END OF STYLESHEET
    ============================================================================ */
