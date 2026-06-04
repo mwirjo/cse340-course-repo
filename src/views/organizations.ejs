@@ -8,8 +8,14 @@
         <ul>
 
             <% organizations.forEach(organization=> { %>
-                <li><img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo"><strong>
-                        <%= organization.name %>
+                <li>
+                    <img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo">
+                    <!-- Link to the organization details page using the organization_id in the URL -->
+                    <!-- This generates URLs like /organization/13 where 13 is the organization ID -->
+                    <strong>
+                        <a href="/organization/<%= organization.organization_id %>">
+                            <%= organization.name %>
+                        </a>
                     </strong>: <%= organization.contact_email %>
                 </li>
                 <% }); %>

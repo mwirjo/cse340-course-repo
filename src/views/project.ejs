@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+    <main>
+        <!-- Display the project title as the page heading -->
+        <h2>
+            <%= project.title %>
+        </h2>
+
+        <!-- Display the project description -->
+        <p>
+            <%= project.description %>
+        </p>
+
+        <!-- Display the project date -->
+        <p><strong>Date:</strong>
+            <%= project.date %>
+        </p>
+
+        <!-- Display the project location -->
+        <p><strong>Location:</strong>
+            <%= project.location %>
+        </p>
+
+        <!-- Display the organization name as a link to the organization details page -->
+        <p><strong>Organization:</strong>
+            <a href="/organization/<%= project.organization_id %>">
+                <%= project.organization_name %>
+            </a>
+        </p>
+
+        <!-- Display category tags for this project -->
+        <!-- Each tag links to the category details page -->
+        <div class="category-tags">
+            <strong>Categories:</strong>
+            <% categories.forEach(category=> { %>
+                <a href="/category/<%= category.category_id %>" class="category-tag">
+                    <%= category.name %>
+                </a>
+                <% }) %>
+        </div>
+    </main>
+    <%- include('partials/footer') %>

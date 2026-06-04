@@ -1,12 +1,13 @@
 <%- include('partials/header') %>
     <main>
+        <!-- Display the category name as the page heading -->
         <h1>
             <%= title %>
         </h1>
 
-        <p>Here are the next five upcoming service projects:</p>
+        <!-- List all service projects for this category -->
+        <h2>Service Projects</h2>
 
-        <!-- Projects container uses CSS grid/flex layout from stylesheet -->
         <div class="projects-container">
             <% projects.forEach(project=> { %>
                 <!-- Each project card uses organization ID for color coding -->

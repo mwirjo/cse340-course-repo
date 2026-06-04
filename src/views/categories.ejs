@@ -9,12 +9,15 @@
     <div class="categories-container">
       <% categories.forEach(category=> { %>
         <div class="category-card">
+          <!-- Category name links to the category details page -->
+          <!-- URL uses category_id to generate links like /category/3 -->
           <div class="category-name">
-            <%= category.name %>
+            <a href="/category/<%= category.category_id %>">
+              <%= category.name %>
+            </a>
           </div>
         </div>
-        <% }); %>
+        <% }) %>
     </div>
   </main>
-
   <%- include('partials/footer') %>

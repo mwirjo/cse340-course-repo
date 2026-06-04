@@ -771,6 +771,43 @@ button:focus {
     font-size: 1.1rem;
     margin-bottom: 20px;
 }
+
+/* ============================================================================
+   CATEGORY TAGS - PROJECT DETAILS PAGE
+   ============================================================================ */
+
+/*
+   Container for category tags on project details page
+   Margin provides spacing from content above
+*/
+.category-tags {
+    margin-top: 20px;
+}
+
+/*
+   Individual category tag
+   Pill-shaped button style
+   Links to category details page
+*/
+.category-tag {
+    display: inline-block;
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin: 4px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+/*
+   Category tag hover state
+   Darker blue on hover for interactivity
+*/
+.category-tag:hover {
+    background-color: #2980b9;
+}
 /* ============================================================================
    END OF STYLESHEET
    ============================================================================ */

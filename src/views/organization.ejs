@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+    <main>
+        <!-- Display the organization name as the page heading -->
+        <h2>
+            <%= organizationDetails.name %>
+        </h2>
+
+        <!-- Display the organization logo from the public/images folder -->
+        <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> logo">
+
+        <!-- Display the organization description -->
+        <p>
+            <%= organizationDetails.description %>
+        </p>
+
+        <!-- List all service projects associated with this organization -->
+        <h3>Service Projects</h3>
+        <ul>
+            <!-- Loop through each project and create a link to its details page -->
+            <!-- Note: /project/:id page will be created in the team activity -->
+            <% projects.forEach(project=> { %>
+                <li>
+                    <!-- project_id is used in the URL to identify the specific project -->
+                    <a href="/project/<%= project.project_id %>">
+                        <%= project.title %>
+                    </a>
+                </li>
+                <% }) %>
+        </ul>
+    </main>
+    <%- include('partials/footer') %>
