@@ -19,7 +19,13 @@ import { testConnection } from './src/models/db.js';
 // all route definitions and controller logic have been moved there
 import router from './src/routes.js';
 
-// ============================================
+//import session
+import session from 'express-session';
+
+//import flash from flash.js
+import flash from './src/middleware/flash.js';
+// ========================================
+// ====
 // ENVIRONMENT SETUP
 // ============================================
 
@@ -33,13 +39,15 @@ const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
 // Define the port number the server will listen on
 const PORT = process.env.PORT || 3000;
 
+const SESSION_SECRET = process.env.SESSION_SECRET;
 // ============================================
 // EXPRESS APP SETUP
 // ============================================
 
 // Create an Express application instance
 const app = express();
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 // Serve static files (CSS, images, JavaScript) from the 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -55,6 +63,12 @@ app.set('views', path.join(__dirname, 'src/views'));
 
 // Middleware to log all incoming requests
 // Only logs in development mode to avoid noise in production
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000 }
+}));
 app.use((req, res, next) => {
     if (NODE_ENV === 'development') {
         console.log(`${req.method} ${req.url}`);
@@ -68,6 +82,7 @@ app.use((req, res, next) => {
     res.locals.NODE_ENV = NODE_ENV;
     next();
 });
+app.use(flash);
 
 // ============================================
 // ROUTES

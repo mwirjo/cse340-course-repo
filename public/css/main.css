@@ -1,6 +1,5 @@
 /* ============================================================================
    CSE 340 Service Network - Main Stylesheet
-   Professional, responsive, and accessible design
    ============================================================================ */
 
 /* ============================================================================
@@ -109,6 +108,13 @@ h2 {
     margin-bottom: 15px;
 }
 
+h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 p {
     font-size: 1rem;
     color: #555;
@@ -128,9 +134,7 @@ p {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
-    /* ← add */
     padding: 12px;
-    /* ← add */
 }
 
 .org-logo {
@@ -139,11 +143,90 @@ p {
     margin: 15px;
     border-radius: 4px;
     background-color: #ffffff;
-    /* ← add */
     padding: 12px;
-    /* ← add */
 }
 
+/* ============================================================================
+   FLASH MESSAGES
+   ============================================================================ */
+
+.alert {
+    padding: 15px 20px;
+    margin: 15px 0;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.alert p {
+    margin: 0;
+    color: inherit;
+}
+
+.alert.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert.warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.alert.info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+/* ============================================================================
+   DELETE BUTTON
+   ============================================================================ */
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    font-family: inherit;
+    margin-left: 10px;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* NEW - style select dropdowns to match input fields */
+.form-group select {
+    padding: 10px 14px;
+    border: 1.5px solid var(--form-input-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    background-color: var(--form-input-bg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+}
+
+.form-group select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+    background-color: var(--bg-card);
+}
 /* ============================================================================
    FOOTER STYLES
    ============================================================================ */
@@ -161,6 +244,244 @@ footer p {
     color: #ecf0f1;
     font-size: 0.95rem;
     margin: 0;
+}
+
+/* ============================================================================
+   ORGANIZATIONS LIST PAGE
+   ============================================================================ */
+
+.organizations-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+    list-style: none;
+    padding: 0;
+}
+
+.org-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.org-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.13);
+}
+
+.org-card-logo-wrapper {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    min-height: 120px;
+}
+
+.org-card-logo-wrapper img {
+    max-width: 120px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.org-card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.org-card-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.org-card-name:hover {
+    color: #3498db;
+}
+
+.org-card-email {
+    font-size: 0.875rem;
+    color: #777;
+}
+
+.org-add-link {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease;
+}
+
+.org-add-link:hover {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+/* ============================================================================
+   ORGANIZATION DETAILS PAGE
+   ============================================================================ */
+
+.org-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #3498db;
+}
+
+.org-detail-logo-wrapper {
+    background-color: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    min-height: 100px;
+    flex-shrink: 0;
+}
+
+.org-detail-logo-wrapper img {
+    max-width: 100px;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.org-detail-info h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+.org-detail-info p {
+    margin: 0;
+    color: #555;
+}
+
+.org-projects-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.org-projects-list li a {
+    display: block;
+    background-color: #ffffff;
+    padding: 14px 18px;
+    border-radius: 8px;
+    border-left: 3px solid #3498db;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.org-projects-list li a:hover {
+    background-color: #eaf4fd;
+    transform: translateX(4px);
+    color: #2980b9;
+}
+
+/* ============================================================================
+   FORM STYLES - NEW ORGANIZATION
+   ============================================================================ */
+
+.form-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 35px 40px;
+    max-width: 600px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.09);
+    border-top: 4px solid #3498db;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+    letter-spacing: 0.02em;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px 14px;
+    border: 1.5px solid #dde3ea;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #333;
+    background-color: #fafafa;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+    background-color: #ffffff;
+}
+
+.form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.form-submit-btn {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    font-family: inherit;
+}
+
+.form-submit-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+
+.form-submit-btn:active {
+    transform: translateY(0);
 }
 
 /* ============================================================================
@@ -261,8 +582,7 @@ footer p {
     font-size: 1.3rem;
     font-weight: 600;
     color: #2c3e50;
-    margin: 0;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
 }
 
 .category-card .category-icon {
@@ -303,7 +623,7 @@ footer p {
 }
 
 /* ============================================================================
-   PROJECT COUNT STYLING
+   PROJECT COUNT & CATEGORY TAGS
    ============================================================================ */
 
 .project-count {
@@ -312,10 +632,6 @@ footer p {
     font-size: 1.1rem;
     margin-bottom: 20px;
 }
-
-/* ============================================================================
-   CATEGORY TAGS - PROJECT DETAILS PAGE
-   ============================================================================ */
 
 .category-tags {
     margin-top: 20px;
@@ -394,9 +710,7 @@ button:focus {
 }
 
 /* ============================================================================
-   DARK MODE - CSS CUSTOM PROPERTIES APPROACH
-   Covers both automatic (prefers-color-scheme) and manual (body.dark-mode)
-   in one place so they never drift out of sync.
+   DARK MODE - CSS CUSTOM PROPERTIES
    ============================================================================ */
 
 :root {
@@ -417,6 +731,9 @@ button:focus {
     --project-count-color: #555;
     --tag-bg: #3498db;
     --tag-bg-hover: #2980b9;
+    --form-input-bg: #fafafa;
+    --form-input-border: #dde3ea;
+    --org-card-border: #f0f0f0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -438,6 +755,9 @@ button:focus {
         --project-count-color: #bdc3c7;
         --tag-bg: #2471a3;
         --tag-bg-hover: #1a5276;
+        --form-input-bg: #1e2a3a;
+        --form-input-border: #2c3e50;
+        --org-card-border: #1e2a3a;
     }
 }
 
@@ -459,9 +779,12 @@ body.dark-mode {
     --project-count-color: #bdc3c7;
     --tag-bg: #2471a3;
     --tag-bg-hover: #1a5276;
+    --form-input-bg: #1e2a3a;
+    --form-input-border: #2c3e50;
+    --org-card-border: #1e2a3a;
 }
 
-/* Apply variables to elements */
+/* Apply variables */
 
 html,
 body {
@@ -498,13 +821,71 @@ footer p {
 }
 
 .project-card,
-.category-card {
+.category-card,
+.org-card,
+.org-detail-header,
+.form-card {
     background-color: var(--bg-card);
     box-shadow: 0 2px 6px var(--card-shadow);
 }
 
+.org-card-logo-wrapper,
+.org-detail-logo-wrapper {
+    background-color: #ffffff;
+}
+
+.org-card-body,
+.org-detail-info p {
+    color: var(--text-secondary);
+}
+
+.org-card-name,
+.org-detail-info h2 {
+    color: var(--heading-color);
+}
+
+.org-card-email {
+    color: var(--text-faint);
+}
+
+.org-card-border {
+    border-bottom-color: var(--org-card-border);
+}
+
+.org-projects-list li a {
+    background-color: var(--bg-card);
+    color: var(--heading-color);
+    box-shadow: 0 1px 4px var(--card-shadow);
+}
+
+.org-projects-list li a:hover {
+    background-color: var(--bg-page);
+}
+
+.form-card {
+    background-color: var(--bg-card);
+}
+
+.form-group label {
+    color: var(--heading-color);
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: var(--form-input-bg);
+    border-color: var(--form-input-border);
+    color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #3498db;
+    background-color: var(--bg-card);
+}
+
 .project-card:hover,
-.category-card:hover {
+.category-card:hover,
+.org-card:hover {
     box-shadow: 0 6px 15px var(--card-shadow-hover);
 }
 
@@ -578,6 +959,21 @@ a:hover {
         padding: 0 15px;
     }
 
+    .organizations-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .org-detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .form-card {
+        padding: 25px 20px;
+    }
+
     .categories-container {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;
@@ -624,12 +1020,16 @@ a:hover {
         margin: 15px auto;
     }
 
+    footer {
+        padding: 20px 10px;
+    }
+
     .main-logo {
         margin: 20px auto;
     }
 
-    footer {
-        padding: 20px 10px;
+    .form-card {
+        padding: 20px 15px;
     }
 
     .categories-container {

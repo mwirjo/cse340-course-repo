@@ -1,0 +1,57 @@
+<%- include('partials/header') %>
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+
+        <div class="form-card">
+            <!-- UPDATED - form action points to edit route with project ID -->
+            <form action="/edit-project/<%= project.project_id %>" method="POST">
+
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <!-- UPDATED - value pre-filled with existing project title -->
+                    <input type="text" id="title" name="title" required maxlength="200" minlength="3"
+                        value="<%= project.title %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <!-- UPDATED - textarea pre-filled with existing project description -->
+                    <textarea id="description" name="description" required
+                        maxlength="1000"><%= project.description %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <!-- UPDATED - value pre-filled with existing project location -->
+                    <input type="text" id="location" name="location" required maxlength="200"
+                        value="<%= project.location %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <!-- UPDATED - date pre-filled, formatted to YYYY-MM-DD for the date picker -->
+                    <input type="date" id="date" name="date" required
+                        value="<%= new Date(project.date).toISOString().split('T')[0] %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="organizationId">Organization</label>
+                    <select id="organizationId" name="organizationId" required>
+                        <option value="">-- Select an Organization --</option>
+                        <% organizations.forEach(org=> { %>
+                            <!-- UPDATED - marks current organization as selected -->
+                            <option value="<%= org.organization_id %>" <%=org.organization_id===project.organization_id
+                                ? 'selected' : '' %>>
+                                <%= org.name %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+
+                <button type="submit" class="form-submit-btn">Save Changes</button>
+            </form>
+        </div>
+    </main>
+    <%- include('partials/footer') %>

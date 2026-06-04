@@ -80,4 +80,39 @@ const getProjectDetails = async (id) => {
     return result.rows.length > 0 ? result.rows[0] : null;
 };
 
-export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails };
+// NEW - inserts a new service project into the database and returns the new project's ID
+const createProject = async (title, description, location, date, organizationId) => {
+    const query = `
+        INSERT INTO public.service_projects (title, description, location, date, organization_id)
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING project_id;
+    `;
+    const queryParams = [title, description, location, date, organizationId];
+    const result = await db.query(query, queryParams);
+    return result.rows[0].project_id;
+};
+
+// NEW - updates an existing service project in the database
+const updateProject = async (projectId, title, description, location, date, organizationId) => {
+    const query = `
+        UPDATE public.service_projects
+        SET 
+            title = $1,
+            description = $2,
+            location = $3,
+            date = $4,
+            organization_id = $5
+        WHERE project_id = $6
+        RETURNING project_id;
+    `;
+    const queryParams = [title, description, location, date, organizationId, projectId];
+    const result = await db.query(query, queryParams);
+
+    // NEW - throw an error if no rows were returned meaning the project was not found
+    if (result.rows.length === 0) {
+        throw new Error(`Project with ID ${projectId} not found`);
+    }
+    return result.rows[0].project_id;
+};
+
+export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails, createProject, updateProject };

@@ -3,23 +3,27 @@
         <h1>
             <%= title %>
         </h1>
-
         <p>Here are a few of our partner organizations:</p>
-        <ul>
 
+        <ul class="organizations-container">
             <% organizations.forEach(organization=> { %>
-                <li>
-                    <img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo">
-                    <!-- Link to the organization details page using the organization_id in the URL -->
-                    <!-- This generates URLs like /organization/13 where 13 is the organization ID -->
-                    <strong>
-                        <a href="/organization/<%= organization.organization_id %>">
+                <li class="org-card">
+                    <div class="org-card-logo-wrapper">
+                        <img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo">
+                    </div>
+                    <div class="org-card-body">
+                        <a class="org-card-name" href="/organization/<%= organization.organization_id %>">
                             <%= organization.name %>
                         </a>
-                    </strong>: <%= organization.contact_email %>
+                        <span class="org-card-email">
+                            <%= organization.contact_email %>
+                        </span>
+                    </div>
                 </li>
                 <% }); %>
         </ul>
-    </main>
 
+        <a href="/new-organization" class="org-add-link">+ Add a New Organization</a>
+        
+    </main>
     <%- include('partials/footer') %>

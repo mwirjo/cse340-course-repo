@@ -66,5 +66,29 @@ const getProjectsByCategoryId = async (categoryId) => {
     return result.rows;
 };
 
+// NEW - inserts a single category assignment into the many-to-many junction table
+const assignCategoryToProject = async (projectId, categoryId) => {
+    const query = `
+        INSERT INTO public.project_category (project_id, category_id)
+        VALUES ($1, $2);
+    `;
+    const queryParams = [projectId, categoryId];
+    await db.query(query, queryParams);
+};
+
+// NEW - updates all category assignments for a project
+// first deletes all existing assignments, then re-inserts the new ones
+const updateCategoryAssignments = async (projectId, categoryIds) => {
+    const deleteQuery = `
+        DELETE FROM public.project_category
+        WHERE project_id = $1;
+    `;
+    await db.query(deleteQuery, [projectId]);
+
+    for (const categoryId of categoryIds) {
+        await assignCategoryToProject(projectId, categoryId);
+    }
+};
+
 // Export all model functions
-export { getAllCategories, getCategoryById, getCategoriesByProjectId, getProjectsByCategoryId };
+export { getAllCategories, getCategoryById, getCategoriesByProjectId, getProjectsByCategoryId, updateCategoryAssignments };

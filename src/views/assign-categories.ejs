@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+
+        <!-- Display the project title for context -->
+        <p><strong>Project:</strong>
+            <%= project.title %>
+        </p>
+
+        <div class="form-card">
+            <!-- POST to the assign categories route with the project ID -->
+            <form action="/project/<%= project.project_id %>/assign-categories" method="POST">
+
+                <div class="form-group">
+                    <label>Select Categories</label>
+
+                    <!-- NEW - loop through all categories and create a checkbox for each -->
+                    <% allCategories.forEach(category=> { %>
+
+                        <!-- NEW - check if this category is already assigned to the project -->
+                        <% const isChecked=assignedCategories.some(ac=> ac.category_id === category.category_id); %>
+
+                            <div>
+                                <input type="checkbox" id="category-<%= category.category_id %>" name="categoryIds"
+                                    value="<%= category.category_id %>" <%=isChecked ? 'checked' : '' %>
+                                >
+                                <label for="category-<%= category.category_id %>">
+                                    <%= category.name %>
+                                </label>
+                            </div>
+
+                            <% }) %>
+                </div>
+
+                <button type="submit" class="form-submit-btn">Save Categories</button>
+            </form>
+        </div>
+
+        <!-- Link back to the project details page -->
+        <a href="/project/<%= project.project_id %>">← Back to Project</a>
+
+    </main>
+    <%- include('partials/footer') %>

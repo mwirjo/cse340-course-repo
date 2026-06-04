@@ -37,5 +37,9 @@
                 </a>
                 <% }) %>
         </div>
+        <!-- NEW - link to assign categories form for this project -->
+        <a href="/project/<%= project.project_id %>/assign-categories" class="org-add-link">Edit Categories</a>
+        <!-- NEW - link to edit project form -->
+        <a href="/edit-project/<%= project.project_id %>" class="org-add-link">Edit Project</a>
     </main>
     <%- include('partials/footer') %>

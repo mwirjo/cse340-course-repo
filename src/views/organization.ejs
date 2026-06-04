@@ -1,26 +1,33 @@
 <%- include('partials/header') %>
     <main>
-        <!-- Display the organization name as the page heading -->
-        <h2>
+        <h1>
             <%= organizationDetails.name %>
-        </h2>
+        </h1>
 
-        <!-- Display the organization logo from the public/images folder -->
-        <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> logo">
-
-        <!-- Display the organization description -->
-        <p>
-            <%= organizationDetails.description %>
-        </p>
-
-        <!-- List all service projects associated with this organization -->
+        <div class="org-detail-header">
+            <div class="org-detail-logo-wrapper">
+                <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> logo">
+            </div>
+            <div class="org-detail-info">
+                <h2>
+                    <%= organizationDetails.name %>
+                </h2>
+                <p>
+                    <%= organizationDetails.description %>
+                </p>
+                <p><strong>Contact:</strong>
+                    <%= organizationDetails.contact_email %>
+                </p>
+            </div>
+        </div>
+        <a href="/edit-organization/<%= organizationDetails.organization_id %>">Edit Organization</a>
+        <form action="/delete-organization/<%= organizationDetails.organization_id %>" method="POST" style="display:inline;">
+            <button type="submit" class="btn-delete">Delete Organization</button>
+        </form>
         <h3>Service Projects</h3>
-        <ul>
-            <!-- Loop through each project and create a link to its details page -->
-            <!-- Note: /project/:id page will be created in the team activity -->
+        <ul class="org-projects-list">
             <% projects.forEach(project=> { %>
                 <li>
-                    <!-- project_id is used in the URL to identify the specific project -->
                     <a href="/project/<%= project.project_id %>">
                         <%= project.title %>
                     </a>
