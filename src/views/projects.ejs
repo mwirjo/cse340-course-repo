@@ -5,7 +5,9 @@
         </h1>
         <!-- NEW - link to the new project form -->
         <!-- NEW - styled link button matching organization page style -->
-        <a href="/new-project" class="org-add-link">+ Add New Service Project</a>
+        <% if (user && user.role_name==='admin' ) { %>
+            <a href="/new-project">Add New Project</a>
+            <% } %>
         <p>Here are the next five upcoming service projects:</p>
 
         <!-- Projects container uses CSS grid/flex layout from stylesheet -->

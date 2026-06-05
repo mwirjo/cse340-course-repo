@@ -43,6 +43,8 @@
                 </div>
                 <% }) %>
         </div>
-        
+        <% if (user && user.role_name==='admin' ) { %>
+            <a href="/edit-category/<%= category.category_id %>" class="org-add-link">Edit Category</a>
+            <% } %>
     </main>
     <%- include('partials/footer') %>

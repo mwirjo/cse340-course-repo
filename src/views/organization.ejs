@@ -20,19 +20,25 @@
                 </p>
             </div>
         </div>
-        <a href="/edit-organization/<%= organizationDetails.organization_id %>">Edit Organization</a>
-        <form action="/delete-organization/<%= organizationDetails.organization_id %>" method="POST" style="display:inline;">
-            <button type="submit" class="btn-delete">Delete Organization</button>
-        </form>
-        <h3>Service Projects</h3>
-        <ul class="org-projects-list">
-            <% projects.forEach(project=> { %>
-                <li>
-                    <a href="/project/<%= project.project_id %>">
-                        <%= project.title %>
-                    </a>
-                </li>
-                <% }) %>
-        </ul>
+
+        <% if (user && user.role_name==='admin' ) { %>
+            <a href="/edit-organization/<%= organizationDetails.organization_id %>" class="org-add-link">Edit
+                Organization</a>
+            <form action="/delete-organization/<%= organizationDetails.organization_id %>" method="POST"
+                style="display:inline;">
+                <button type="submit" class="btn-delete">Delete Organization</button>
+            </form>
+            <% } %>
+
+                <h3>Service Projects</h3>
+                <ul class="org-projects-list">
+                    <% projects.forEach(project=> { %>
+                        <li>
+                            <a href="/project/<%= project.project_id %>">
+                                <%= project.title %>
+                            </a>
+                        </li>
+                        <% }) %>
+                </ul>
     </main>
     <%- include('partials/footer') %>

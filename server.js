@@ -80,6 +80,7 @@ app.use((req, res, next) => {
 // This allows templates to conditionally show development-only content
 app.use((req, res, next) => {
   res.locals.isLoggedIn = !!(req.session && req.session.user)
+  res.locals.user = req.session ? req.session.user : null
   res.locals.NODE_ENV = NODE_ENV
   next()
 })
