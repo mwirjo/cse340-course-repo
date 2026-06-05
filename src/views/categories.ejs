@@ -5,17 +5,20 @@
     </h1>
 
     <p>Here are our service project categories:</p>
+    <!-- link to add a new category -->
+    <a href="/new-category" class="org-add-link">+ Add New Category</a>
 
     <div class="categories-container">
       <% categories.forEach(category=> { %>
         <div class="category-card">
           <!-- Category name links to the category details page -->
-          <!-- URL uses category_id to generate links like /category/3 -->
           <div class="category-name">
             <a href="/category/<%= category.category_id %>">
               <%= category.name %>
             </a>
           </div>
+          <!-- NEW - edit link inside each card so every category can be edited -->
+          <a href="/edit-category/<%= category.category_id %>" class="org-add-link">Edit</a>
         </div>
         <% }) %>
     </div>

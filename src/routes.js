@@ -26,7 +26,18 @@ import {
 } from './controllers/projects.js';
 
 // UPDATED - added assign categories controller functions to imports
-import { showCategoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm } from './controllers/categories.js';
+// UPDATED - added new and edit category controller functions to imports
+import {
+    showCategoriesPage,
+    showCategoryDetailsPage,
+    showAssignCategoriesForm,
+    processAssignCategoriesForm,
+    showNewCategoryForm,
+    processNewCategoryForm,
+    showEditCategoryForm,
+    processEditCategoryForm,
+    categoryValidation
+} from './controllers/categories.js';
 import { testErrorPage } from './controllers/errors.js';
 
 
@@ -54,6 +65,17 @@ router.get('/project/:id', showProjectDetailsPage);
 router.get('/categories', showCategoriesPage);
 // Route for category details page
 router.get('/category/:id', showCategoryDetailsPage);
+// NEW - GET route serves the new category form
+router.get('/new-category', showNewCategoryForm);
+
+// NEW - POST route processes the new category form, categoryValidation runs first
+router.post('/new-category', categoryValidation, processNewCategoryForm);
+
+// NEW - GET route serves the edit category form pre-filled with existing data
+router.get('/edit-category/:id', showEditCategoryForm);
+
+// NEW - POST route processes the edit category form submission
+router.post('/edit-category/:id', categoryValidation, processEditCategoryForm);
 
 // NEW - GET route serves the assign categories form for a specific project
 router.get('/project/:projectId/assign-categories', showAssignCategoriesForm);

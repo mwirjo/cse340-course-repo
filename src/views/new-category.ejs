@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+
+        <div class="form-card">
+            <form action="/new-category" method="POST">
+
+                <div class="form-group">
+                    <label for="name">Category Name</label>
+                    <!-- client-side: required and max 100, NO minlength per assignment instructions -->
+                    <input type="text" id="name" name="name" required maxlength="100" placeholder="Enter category name">
+                </div>
+
+                <button type="submit" class="form-submit-btn">Add Category</button>
+            </form>
+        </div>
+    </main>
+    <%- include('partials/footer') %>

@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+
+        <div class="form-card">
+            <!-- UPDATED - form action points to edit route with category ID -->
+            <form action="/edit-category/<%= category.category_id %>" method="POST">
+
+                <div class="form-group">
+                    <label for="name">Category Name</label>
+                    <!-- client-side: required and max 100, NO minlength per assignment instructions -->
+                    <!-- UPDATED - pre-filled with existing category name -->
+                    <input type="text" id="name" name="name" required maxlength="100" value="<%= category.name %>">
+                </div>
+
+                <button type="submit" class="form-submit-btn">Save Changes</button>
+            </form>
+        </div>
+
+        <!-- Link back to categories list -->
+        <a href="/categories">← Back to Categories</a>
+    </main>
+    <%- include('partials/footer') %>
