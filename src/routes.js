@@ -1,5 +1,5 @@
 import express from 'express';
-import { showLoginForm, processLoginForm, processLogout, requireRole, requireLogin, showDashboard } from './controllers/users.js'
+import { showLoginForm, processLoginForm, processLogout, requireRole, requireLogin, showDashboard, showUsersPage } from './controllers/users.js'
 import { showHomePage } from './controllers/index.js';
 import {
     showOrganizationsPage,
@@ -43,7 +43,7 @@ router.get('/logout', processLogout)
 router.get('/register', showUserRegistrationForm)
 router.post('/register', processUserRegistrationForm)
 router.get('/dashboard', requireLogin, showDashboard)
-
+router.get('/users', requireRole('admin'), showUsersPage)
 // Home
 router.get('/', showHomePage);
 

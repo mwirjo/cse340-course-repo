@@ -1125,3 +1125,57 @@ textarea:focus-visible {
 /* ============================================================================
    END OF STYLESHEET
    ============================================================================ */
+   /* ============================================================================
+   USERS TABLE
+   ============================================================================ */
+   .users-table {
+       width: 100%;
+       border-collapse: collapse;
+       background-color: var(--bg-card);
+       border-radius: var(--radius-lg);
+       overflow: hidden;
+       box-shadow: var(--shadow-md);
+       border: 1px solid var(--border-card);
+       margin-top: 24px;
+   }
+
+   .users-table thead {
+       background-color: var(--accent);
+       color: #ffffff;
+   }
+
+   .users-table thead th {
+       padding: 14px 18px;
+       text-align: left;
+       font-size: 0.85rem;
+       font-weight: 600;
+       letter-spacing: 0.05em;
+       text-transform: uppercase;
+   }
+
+   .users-table tbody tr {
+       border-bottom: 1px solid var(--border-card);
+       transition: background-color 0.2s ease;
+   }
+
+   .users-table tbody tr:last-child {
+       border-bottom: none;
+   }
+
+   .users-table tbody tr:hover {
+       background-color: var(--accent-soft);
+   }
+
+   .users-table tbody td {
+       padding: 14px 18px;
+       font-size: 0.925rem;
+       color: var(--text-secondary);
+   }
+
+   .users-table .role-badge {
+       display: inline-block;
+       padding: 3px 10px;
+       border-radius: 20px;
+       font-size: 0.775rem;
+       font-weight: 600;
+       background-color: var(--accent-soft);

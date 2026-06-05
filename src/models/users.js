@@ -32,3 +32,13 @@ export async function createUser(name, email, passwordHash) {
   )
   return result.rows[0]
 }
+
+export async function getAllUsers() {
+  const result = await pool.query(
+    `SELECT u.user_id, u.name, u.email, r.role_name
+     FROM users u
+     JOIN roles r ON u.role_id = r.role_id
+     ORDER BY u.user_id`
+  )
+  return result.rows
+}

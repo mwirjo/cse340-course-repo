@@ -7,5 +7,9 @@
         <p><strong>Email:</strong>
             <%= email %>
         </p>
+
+        <% if (user && user.role_name==='admin' ) { %>
+            <a href="/users" class="org-add-link">View All Users</a>
+            <% } %>
     </main>
     <%- include('partials/footer') %>

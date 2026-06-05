@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import { createUser, authenticateUser } from '../models/users.js'
+import { createUser, authenticateUser, getAllUsers } from '../models/users.js'
 
 export function showUserRegistrationForm(req, res) {
   res.render('register', { title: 'Register' })
@@ -62,4 +62,9 @@ export function requireRole(role) {
     req.flash('error', 'You do not have permission to access that page.')
     res.redirect('/')
   }
+}
+
+export async function showUsersPage(req, res) {
+  const users = await getAllUsers()
+  res.render('users', { title: 'Registered Users', users })
 }
