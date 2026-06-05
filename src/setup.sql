@@ -84,3 +84,35 @@ INSERT INTO project_category (project_id, category_id) VALUES
 (1, 2), (2, 2), (3, 1), (4, 3), (5, 5),
 (6, 4), (7, 2), (8, 4), (9, 4), (10, 2),
 (11, 3), (12, 3), (13, 6), (14, 3), (15, 6);
+
+CREATE TABLE roles (
+    role_id SERIAL PRIMARY KEY,
+    role_name VARCHAR(50) UNIQUE NOT NULL,
+    role_description TEXT
+);
+
+INSERT INTO roles (role_name, role_description) VALUES 
+    ('user', 'Standard user with basic access'),
+    ('admin', 'Administrator with full system access');
+	
+SELECT * FROM roles;
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role_id INTEGER REFERENCES roles(role_id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert test user
+INSERT INTO users (name, email, password_hash, role_id)
+VALUES ('Test User', 'test@test.com', 'placeholder_hash', 1);
+
+-- Join test
+SELECT u.name, u.email, r.role_name
+FROM users u JOIN roles r ON u.role_id = r.role_id;
+
+-- Clean up
+DELETE FROM users WHERE email = 'test@test.com';

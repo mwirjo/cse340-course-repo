@@ -38,6 +38,12 @@
           <li><a href="/organizations">Organizations</a></li>
           <li><a href="/projects">Projects</a></li>
           <li><a href="/categories">Categories</a></li>
+          <% if (isLoggedIn) { %>
+            <a href="/logout">Logout</a>
+            <% } else { %>
+              <a href="/register">Register</a>
+              <a href="/login">Login</a>
+              <% } %>
         </ul>
 
         <!-- Settings section inside nav -->

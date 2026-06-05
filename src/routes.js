@@ -1,5 +1,5 @@
 import express from 'express';
-
+import { showLoginForm, processLoginForm, processLogout } from './controllers/users.js'
 // Import controller functions for each page
 import { showHomePage } from './controllers/index.js';
 import {
@@ -39,12 +39,17 @@ import {
     categoryValidation
 } from './controllers/categories.js';
 import { testErrorPage } from './controllers/errors.js';
+import { showUserRegistrationForm, processUserRegistrationForm , requireLogin, showDashboard } from './controllers/users.js'
 
 
 // Create a new router instance
 // This router will handle all routes and be exported to server.js
 const router = express.Router();
+router.get('/login', showLoginForm)
+router.post('/login', processLoginForm)
+router.get('/logout', processLogout)
 
+router.get('/dashboard', requireLogin, showDashboard)
 // Home page route
 router.get('/', showHomePage);
 
@@ -106,9 +111,15 @@ router.post('/edit-project/:id', projectValidation, processEditProjectForm);
 // Test route to simulate a 500 server error (development use only)
 router.get('/test-error', testErrorPage);
 
+router.get('/register', showUserRegistrationForm)
+router.post('/register', processUserRegistrationForm)
+
 // Silence Chrome DevTools probe
 router.get('/.well-known/appspecific/com.chrome.devtools.json', (req, res) => {
     res.status(204).end();
 });
+
+
+
 // Export the router to be used in server.js
 export default router;
