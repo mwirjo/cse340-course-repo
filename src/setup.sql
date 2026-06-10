@@ -116,3 +116,11 @@ FROM users u JOIN roles r ON u.role_id = r.role_id;
 
 -- Clean up
 DELETE FROM users WHERE email = 'test@test.com';
+
+CREATE TABLE volunteers (
+    user_id INT NOT NULL,
+    project_id INT NOT NULL,
+    PRIMARY KEY (user_id, project_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (project_id) REFERENCES service_projects(project_id)
+);

@@ -1,15 +1,40 @@
 <%- include('partials/header') %>
     <main>
         <h1>Dashboard</h1>
-        <p><strong>Name:</strong>
-            <%= name %>
-        </p>
-        <p><strong>Email:</strong>
-            <%= email %>
-        </p>
 
-        <% if (user && user.role_name==='admin' ) { %>
-            <a href="/users" class="org-add-link">View All Users</a>
-            <% } %>
+        <div class="form-card">
+            <p><strong>Name:</strong>
+                <%= name %>
+            </p>
+            <p><strong>Email:</strong>
+                <%= email %>
+            </p>
+            <% if (user && user.role_name==='admin' ) { %>
+                <a href="/users" class="org-add-link">View All Users</a>
+                <% } %>
+        </div>
+
+        <h2>My Volunteer Projects</h2>
+
+        <% if (volunteeredProjects.length===0) { %>
+            <p>You have not signed up for any projects yet. <a href="/projects">Browse projects</a></p>
+            <% } else { %>
+                <ul class="volunteer-list">
+                    <% volunteeredProjects.forEach(project=> { %>
+                        <li class="volunteer-item">
+                            <div class="volunteer-item-info">
+                                <a href="/project/<%= project.project_id %>" class="volunteer-item-title">
+                                    <%= project.title %>
+                                </a>
+                                <span class="volunteer-item-meta">📍 <%= project.location %> &nbsp;|&nbsp; 📅 <%=
+                                            project.date %></span>
+                            </div>
+                            <form action="/project/<%= project.project_id %>/unvolunteer" method="POST">
+                                <button type="submit" class="btn-delete">🚫 Remove</button>
+                            </form>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
     </main>
     <%- include('partials/footer') %>

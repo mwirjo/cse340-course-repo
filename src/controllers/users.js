@@ -1,5 +1,7 @@
 import bcrypt from 'bcrypt'
 import { createUser, authenticateUser, getAllUsers } from '../models/users.js'
+import { getVolunteerProjectsByUser } from '../models/volunteers.js'
+
 
 export function showUserRegistrationForm(req, res) {
   res.render('register', { title: 'Register' })
@@ -50,10 +52,15 @@ export function requireLogin(req, res, next) {
   next()
 }
 
-export function showDashboard(req, res) {
-  const { name, email } = req.session.user
-  res.render('dashboard', { title: 'Dashboard', name, email })
+
+
+export async function showDashboard(req, res) {
+  const { name, email, user_id } = req.session.user
+  const volunteeredProjects = await getVolunteerProjectsByUser(user_id)
+  res.render('dashboard', { title: 'Dashboard', name, email, volunteeredProjects })
 }
+
+
 export function requireRole(role) {
   return (req, res, next) => {
     if (req.session.user && req.session.user.role_name === role) {

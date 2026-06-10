@@ -4,6 +4,9 @@
             <%= title %>
         </h1>
         <p>Here are a few of our partner organizations:</p>
+        <% if (user && user.role_name==='admin' ) { %>
+            <a href="/new-organization" class="org-add-link">+ Add New Organization</a>
+            <% } %>
 
         <ul class="organizations-container">
             <% organizations.forEach(organization=> { %>
@@ -23,9 +26,6 @@
                 <% }); %>
         </ul>
 
-        <% if (user && user.role_name==='admin' ) { %>
-            <a href="/new-organization">Add New Organization</a>
-            <% } %>
         
     </main>
     <%- include('partials/footer') %>

@@ -32,7 +32,8 @@ import {
     categoryValidation
 } from './controllers/categories.js';
 import { testErrorPage } from './controllers/errors.js';
-import { showUserRegistrationForm, processUserRegistrationForm } from './controllers/users.js'
+import { showUserRegistrationForm, processUserRegistrationForm } from './controllers/users.js';
+import { volunteerForProject, unvolunteerFromProject } from './controllers/volunteers.js';
 
 const router = express.Router();
 
@@ -63,7 +64,8 @@ router.get('/new-project', requireRole('admin'), showNewProjectForm);
 router.post('/new-project', requireRole('admin'), projectValidation, processNewProjectForm);
 router.get('/edit-project/:id', requireRole('admin'), showEditProjectForm);
 router.post('/edit-project/:id', requireRole('admin'), projectValidation, processEditProjectForm);
-
+router.post('/project/:id/volunteer', requireLogin, volunteerForProject)
+router.post('/project/:id/unvolunteer', requireLogin, unvolunteerFromProject)
 // Categories
 router.get('/categories', showCategoriesPage);
 router.get('/category/:id', showCategoryDetailsPage);

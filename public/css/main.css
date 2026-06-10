@@ -1178,4 +1178,108 @@ textarea:focus-visible {
        border-radius: 20px;
        font-size: 0.775rem;
        font-weight: 600;
-       background-color: var(--accent-soft);
+       background-color: var(--accent-soft);}
+           /* ============================================================================
+       VOLUNTEER SECTION
+       ============================================================================ */
+           .volunteer-section {
+               margin-top: 24px;
+               padding: 20px;
+               background-color: var(--bg-card);
+               border-radius: var(--radius-lg);
+               border: 1px solid var(--border-card);
+               box-shadow: var(--shadow-sm);
+               display: flex;
+               align-items: center;
+               gap: 16px;
+               flex-wrap: wrap;
+           }
+    
+           .volunteer-status {
+               color: var(--success-text) !important;
+               background-color: var(--success-bg);
+               border: 1px solid var(--success-border);
+               padding: 8px 16px;
+               border-radius: var(--radius-md);
+               font-weight: 600;
+               font-size: 0.925rem;
+               margin: 0 !important;
+           }
+    
+           .btn-volunteer {
+               display: inline-flex;
+               align-items: center;
+               gap: 8px;
+               padding: 10px 22px;
+               border-radius: var(--radius-md);
+               background-color: #10b981;
+               color: #ffffff;
+               font-family: var(--font-body);
+               font-size: 0.925rem;
+               font-weight: 600;
+               border: none;
+               cursor: pointer;
+               transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+               box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+               white-space: nowrap;
+           }
+    
+           .btn-volunteer:hover {
+               background-color: #059669;
+               transform: translateY(-1px);
+               box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+           }
+
+                   /* ============================================================================
+           VOLUNTEER LIST - DASHBOARD
+           ============================================================================ */
+                   .volunteer-list {
+                       list-style: none;
+                       display: flex;
+                       flex-direction: column;
+                       gap: 12px;
+                       margin-top: 16px;
+                   }
+        
+                   .volunteer-item {
+                       display: flex;
+                       align-items: center;
+                       justify-content: space-between;
+                       gap: 16px;
+                       background-color: var(--bg-card);
+                       padding: 16px 20px;
+                       border-radius: var(--radius-lg);
+                       border: 1px solid var(--border-card);
+                       border-left: 4px solid #10b981;
+                       box-shadow: var(--shadow-sm);
+                       transition: transform 0.2s ease, box-shadow 0.2s ease;
+                       flex-wrap: wrap;
+                   }
+        
+                   .volunteer-item:hover {
+                       transform: translateY(-2px);
+                       box-shadow: var(--shadow-hover);
+                   }
+        
+                   .volunteer-item-info {
+                       display: flex;
+                       flex-direction: column;
+                       gap: 4px;
+                   }
+        
+                   .volunteer-item-title {
+                       font-family: var(--font-heading);
+                       font-size: 1rem;
+                       color: var(--heading-color);
+                       text-decoration: none;
+                       font-weight: 600;
+                   }
+        
+                   .volunteer-item-title:hover {
+                       color: var(--accent);
+                   }
+        
+                   .volunteer-item-meta {
+                       font-size: 0.825rem;
+                       color: var(--text-faint);
+                   }

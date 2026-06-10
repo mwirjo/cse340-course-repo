@@ -5,11 +5,12 @@
         </h1>
         <!-- NEW - link to the new project form -->
         <!-- NEW - styled link button matching organization page style -->
-        <% if (user && user.role_name==='admin' ) { %>
-            <a href="/new-project">Add New Project</a>
-            <% } %>
+        
         <p>Here are the next five upcoming service projects:</p>
-
+            <p>Here are the next five upcoming service projects:</p>
+            <% if (user && user.role_name==='admin' ) { %>
+                <a href="/new-project" class="org-add-link">+ Add New Project</a>
+                <% } %>
         <!-- Projects container uses CSS grid/flex layout from stylesheet -->
         <div class="projects-container">
             <% projects.forEach(project=> { %>

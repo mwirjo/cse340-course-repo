@@ -7,6 +7,7 @@ import { getCategoriesByProjectId } from '../models/categories.js';
 import { getAllOrganizations } from '../models/organizations.js';
 // NEW - import validation functions from express-validator
 import { body, validationResult } from 'express-validator';
+import { isUserVolunteered } from '../models/volunteers.js'
 
 // Number of upcoming projects to display on the projects page
 const NUMBER_OF_UPCOMING_PROJECTS = 5;
@@ -21,15 +22,22 @@ const showProjectsPage = async (req, res) => {
 
 // Shows the details of a single service project
 // Also fetches the categories for that project to display as tags
+
+
 const showProjectDetailsPage = async (req, res) => {
     const projectId = req.params.id;
     const project = await getProjectDetails(projectId);
-    // Get all categories associated with this project
     const categories = await getCategoriesByProjectId(projectId);
     const title = 'Service Project Details';
 
-    res.render('project', { title, project, categories });
+    let isVolunteered = false
+    if (req.session.user) {
+        isVolunteered = await isUserVolunteered(req.session.user.user_id, projectId)
+    }
+
+    res.render('project', { title, project, categories, isVolunteered });
 };
+
 
 // NEW - serves the new project form, passes organizations for the dropdown menu
 const showNewProjectForm = async (req, res) => {
